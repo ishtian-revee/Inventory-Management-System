@@ -18,49 +18,49 @@ if(isset($_GET["did"]))
 	<meta name="viewpoint" content="width=device-width, initial-scale-1">
 
 	<title>Inventory Management System</title>
-	
+
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
 
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
 	crossorigin="anonymous">
 
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
-	
+
 	<!-- Customized css file -->
-	<link rel="stylesheet" type="text/css" href="styles/sm_showroom_products.css" />
+	<link rel="stylesheet" type="text/css" href="../styles/sm_showroom_products.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 
 <body>
-	
+
 	<div id="header">
 		<div class="logo">
 			<a href="#">In<span>ventory</span></a>
 		</div>
-		
+
 		<div class="dropdown">
 			<a href=""><span class="fa fa-user"></span> User</a>
-			
+
 			<div class="dropdown-content">
 				<a href="sm_edit_profile.php">Edit Profile</a>
 				<a href="login.php">Logout</a>
 			</div>
 		</div>
 	</div>
-	
+
 	<div id="container">
 		<div class="sidebar">
 			<ul>
 				<a href=""><li>Dashboard</li></a>
-				
+
 				<a href="sm_associates_list.php">
 					<li>Associates List
 						<!-- <ul> -->
@@ -69,7 +69,7 @@ if(isset($_GET["did"]))
 						<!-- </ul> -->
 					</li>
 				</a>
-				
+
 				<!-- <a href=""> -->
 					<!-- <li>Caregories -->
 						<!-- <ul> -->
@@ -78,7 +78,7 @@ if(isset($_GET["did"]))
 						<!-- </ul> -->
 					<!-- </li> -->
 				<!-- </a> -->
-				
+
 				<!-- <a href=""> -->
 					<!-- <li>Sub-categories -->
 						<!-- <ul> -->
@@ -87,7 +87,7 @@ if(isset($_GET["did"]))
 						<!-- </ul> -->
 					<!-- </li> -->
 				<!-- </a> -->
-				
+
 				<a href="">
 					<li>Items
 						<ul>
@@ -96,7 +96,7 @@ if(isset($_GET["did"]))
 						</ul>
 					</li>
 				</a>
-				
+
 				<a href="">
 					<li>Orders
 						<ul>
@@ -107,13 +107,13 @@ if(isset($_GET["did"]))
 				</a>
 			</ul>
 		</div>
-		
+
 		<div class="content">
 			<div class="content_area">
-			
+
 				<h2>Showroom Products</h2>
 				<hr>
-				
+
 				<input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for names..">
 
 				<table id="myTable">
@@ -128,8 +128,8 @@ if(isset($_GET["did"]))
 						<th style="width:12%;">Pro. Date</th>
 						<th style="width:15%;">Action</th>
 					</tr>
-				
-					<?php 
+
+					<?php
 						$result = getJSONFromDB("select * from sitems order by ITEM_ID asc");
 						$result = json_decode($result, true);
 						for($i=0;$i<sizeof($result);$i++){
@@ -154,15 +154,15 @@ if(isset($_GET["did"]))
 							 </tr>";
 						}
 					?>
-					
+
 				</table>
-				
+
 			</div>
 		</div>
-		
+
 		<script>
 			function searchFunction() {
-			  // Declare variables 
+			  // Declare variables
 			  var input, filter, table, tr, td, i;
 			  input = document.getElementById("myInput");
 			  filter = input.value.toUpperCase();
@@ -178,15 +178,15 @@ if(isset($_GET["did"]))
 				  } else {
 					tr[i].style.display = "none";
 				  }
-				} 
+				}
 			  }
 			}
 		</script>
 	</div>
-	
+
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 </body>
 </html>

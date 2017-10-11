@@ -1,4 +1,4 @@
-<?php 
+<?php
 //session_start();
 /*if($_SESSION["admin"] != true){
 	header("location: Login.php");
@@ -28,12 +28,12 @@ if(isset($_REQUEST["create_new_vendor"]))
 		$id = $id + 1;
 		insertIntoDB("insert into vendor values ('$id', '$name', '$contact', '$email')");
 
-		header("Location: admin_vendor_list.php");		
+		header("Location: admin_vendor_list.php");
 	}
 	else{
 		header("Location: admin_vendor_list.php");
 	}
-	
+
 }
 if(isset($_REQUEST["update_vendor"]) )
 {
@@ -65,7 +65,7 @@ if(isset($_REQUEST["update_vendor"]) )
 	else{
 		$email = $result[0]["VENDOR_EMAIL"];
 	}
-	updateIntoDB("update vendor set vendor_name = '$name', vendor_contact_no = '$contact', 
+	updateIntoDB("update vendor set vendor_name = '$name', vendor_contact_no = '$contact',
 		vendor_email = '$email' where vendor_id = $id");
 	header("Location: admin_vendor_list.php");
 
@@ -114,44 +114,44 @@ if(isset($_REQUEST["update_vendor"]) )
 	<meta name="viewpoint" content="width=device-width, initial-scale-1">
 
 	<title>Inventory Management System</title>
-	
+
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
 
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
 	crossorigin="anonymous">
 
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
-	
+
 	<!-- Customized css file -->
-	<link rel="stylesheet" type="text/css" href="styles/admin.css" />
+	<link rel="stylesheet" type="text/css" href="../styles/admin.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 
 <body>
-	
+
 	<div id="header">
 		<div class="logo">
 			<a href="#">In<span>ventory</span></a>
 		</div>
-		
+
 		<div class="dropdown">
 			<a href=""><span class="fa fa-user"></span> User</a>
-			
+
 			<div class="dropdown-content">
 				<a href="admin_edit_profile.php">Edit Profile</a>
 				<a href="login.php">Logout</a>
 			</div>
 		</div>
 	</div>
-	
+
 	<div id="container">
 		<div class="sidebar">
 			<ul>
@@ -173,7 +173,7 @@ if(isset($_REQUEST["update_vendor"]) )
 						</ul>
 					</li>
 				</a>
-				
+
 				<a href="">
 					<li>Caregories
 						<ul>
@@ -182,7 +182,7 @@ if(isset($_REQUEST["update_vendor"]) )
 						</ul>
 					</li>
 				</a>
-				
+
 				<a href="">
 					<li>Sub-categories
 						<ul>
@@ -191,7 +191,7 @@ if(isset($_REQUEST["update_vendor"]) )
 						</ul>
 					</li>
 				</a>
-				
+
 				<a href="">
 					<li>Items
 						<ul>
@@ -200,7 +200,7 @@ if(isset($_REQUEST["update_vendor"]) )
 						</ul>
 					</li>
 				</a>
-				
+
 				<a href="admin_material_list.php">
 					<li>Material List
 						<!-- <ul> -->
@@ -213,10 +213,10 @@ if(isset($_REQUEST["update_vendor"]) )
 				<a href="admin_vendor_list.php"><li>Vendor List</li></a>
 			</ul>
 		</div>
-		
+
 		<div class="content">
 			<div class="content_area">
-			
+
 				<h2>Vendor List</h2>
 				<hr>
 
@@ -224,13 +224,13 @@ if(isset($_REQUEST["update_vendor"]) )
 		<div class = "left">
 			<table id="tbb">
 				<th>Vendor ID</th> <th>Name</th> <th> Contact</th> <th> Email </th> <th>Delete</th>
-				<?php 
+				<?php
 					for($i=0;$i<sizeof($result);$i++){
 						$id = $result[$i]["VENDOR_ID"];
 						$name = $result[$i]["VENDOR_NAME"];
 						$contact = $result[$i]["VENDOR_CONTACT_NO"];
 						$email = $result[$i]["VENDOR_EMAIL"];
-						
+
 						echo "<tr>
 							<td>$id</td>
 							<td>$name</td>
@@ -271,7 +271,7 @@ if(isset($_REQUEST["update_vendor"]) )
 		</div>
 		<div>
 		<br><br>
-		
+
 			<form action="admin_vendor_list.php" method="POST">
 				<table id="tbb">
 					<tr>
@@ -299,17 +299,17 @@ if(isset($_REQUEST["update_vendor"]) )
 		</div>
 		</div>
 	</div>
-				
+
 			</div>
 		</div>
 	</div>
-		
+
 		</div>
 	</div>
-	
+
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 </body>
 </html>

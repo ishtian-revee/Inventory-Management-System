@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require("db.php");
 
@@ -30,7 +30,7 @@ require("db.php");
 		else{
 			$pass= $_SESSION["showroom_pass"];
 		}
-	
+
 		updateIntoDB("update manager set MANAGER_EMAIL = '$email', MANAGER_CONTACT_NUMBER= '$contact' where MANAGER_ID = $fac");
 		updateIntoDB("update login set PASSWORD = '$pass' where ID = $fac");
 		header("Location: showroom_manager.php");
@@ -47,49 +47,49 @@ require("db.php");
 	<meta name="viewpoint" content="width=device-width, initial-scale-1">
 
 	<title>Inventory Management System</title>
-	
+
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
 
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
 	crossorigin="anonymous">
 
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
-	
+
 	<!-- Customized css file -->
-	<link rel="stylesheet" type="text/css" href="styles/sm_edit_profile.css" />
+	<link rel="stylesheet" type="text/css" href="../styles/sm_edit_profile.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 
 <body>
-	
+
 	<div id="header">
 		<div class="logo">
 			<a href="#">In<span>ventory</span></a>
 		</div>
-		
+
 		<div class="dropdown">
 			<a href=""><span class="fa fa-user"></span> User</a>
-			
+
 			<div class="dropdown-content">
 				<a href="sm_edit_profile.php">Edit Profile</a>
 				<a href="login.php">Logout</a>
 			</div>
 		</div>
 	</div>
-	
+
 	<div id="container">
 		<div class="sidebar">
 			<ul>
 				<a href=""><li>Dashboard</li></a>
-				
+
 				<a href="sm_associates_list.php">
 					<li>Associates List
 						<!-- <ul> -->
@@ -98,7 +98,7 @@ require("db.php");
 						<!-- </ul> -->
 					</li>
 				</a>
-				
+
 				<!-- <a href=""> -->
 					<!-- <li>Caregories -->
 						<!-- <ul> -->
@@ -107,7 +107,7 @@ require("db.php");
 						<!-- </ul> -->
 					<!-- </li> -->
 				<!-- </a> -->
-				
+
 				<!-- <a href=""> -->
 					<!-- <li>Sub-categories -->
 						<!-- <ul> -->
@@ -116,7 +116,7 @@ require("db.php");
 						<!-- </ul> -->
 					<!-- </li> -->
 				<!-- </a> -->
-				
+
 				<a href="">
 					<li>Items
 						<ul>
@@ -125,7 +125,7 @@ require("db.php");
 						</ul>
 					</li>
 				</a>
-				
+
 				<a href="">
 					<li>Orders
 						<ul>
@@ -136,7 +136,7 @@ require("db.php");
 				</a>
 			</ul>
 		</div>
-		
+
 		<div class="content">
 			<form action="sm_edit_profile.php" method="POST">
 				<div class="first_block">
@@ -146,24 +146,24 @@ require("db.php");
 					<input type="email" placeholder="Mail Address" name="mmail">
 					<p>Phone</p>
 					<input type="number" placeholder="Contact No." name="mcon">
-						
+
 				</div>
-					
+
 				<div class="second_block">
 					<p>New Password</p>
 					<input type="password" placeholder="Password" name="mnp">
 					<p>Confirm Password</p>
 					<input type="password" placeholder="Confirm password" name ="mcp">
-						
+
 					<input type="submit" name="update_info" value="Edit">
 				</div>
 			</form>
 		</div>
 	</div>
-	
+
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,9 +1,9 @@
-<?php 
+<?php
 
 require("db.php");
 
 if(isset($_REQUEST["add_items"]))
-{ 
+{
 	//a procedure is being called
 		$iname = $_REQUEST["item_name"];
 		$cname = $_REQUEST["cat_name"];
@@ -13,7 +13,7 @@ if(isset($_REQUEST["add_items"]))
 		$dis = $_REQUEST["discount"];
 		insertIntoDB("begin add_items('$iname','$cname','$sname','$stock','$price','$dis');end;");
 		header("Location: fm_manage_items.php");
-	
+
 }
 ?>
 
@@ -27,50 +27,50 @@ if(isset($_REQUEST["add_items"]))
 	<meta name="viewpoint" content="width=device-width, initial-scale-1">
 
 	<title>Inventory Management System</title>
-	
+
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
 
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
 	crossorigin="anonymous">
 
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
-	
+
 	<!-- Customized css file -->
-	<link rel="stylesheet" type="text/css" href="styles/fm_add_items.css" />
+	<link rel="stylesheet" type="text/css" href="../styles/fm_add_items.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 
 <body>
-	
+
 	<div id="header">
 		<div class="logo">
 			<a href="#">In<span>ventory</span></a>
 		</div>
-		
+
 		<div class="dropdown">
 			<a href=""><span class="fa fa-user"></span> User</a>
-			
+
 			<div class="dropdown-content">
 				<a href="fm_edit_profile.php">Edit Profile</a>
 				<a href="login.php">Logout</a>
 			</div>
 		</div>
 	</div>
-	
+
 	<div id="container">
 		<div class="sidebar">
 			<ul>
 				<a href=""><li>Dashboard</li></a>
 				<a href="fm_dashboard.php"></a>
-				
+
 				<a href="fm_associates_list.php">
 					<li>Associates List
 						<!-- <ul> -->
@@ -79,7 +79,7 @@ if(isset($_REQUEST["add_items"]))
 						<!-- </ul> -->
 					</li>
 				</a>
-				
+
 				<a href="">
 					<li>Caregories
 						<ul>
@@ -88,7 +88,7 @@ if(isset($_REQUEST["add_items"]))
 						</ul>
 					</li>
 				</a>
-				
+
 				<a href="">
 					<li>Sub-categories
 						<ul>
@@ -97,7 +97,7 @@ if(isset($_REQUEST["add_items"]))
 						</ul>
 					</li>
 				</a>
-				
+
 				<a href="">
 					<li>Items
 						<ul>
@@ -107,7 +107,7 @@ if(isset($_REQUEST["add_items"]))
 						</ul>
 					</li>
 				</a>
-				
+
 				<a href="">
 					<li>Materials
 						<ul>
@@ -116,11 +116,11 @@ if(isset($_REQUEST["add_items"]))
 						</ul>
 					</li>
 				</a>
-				
+
 				<a href="fm_purchase_history.php"><li>Purchase History</li></a>
 			</ul>
 		</div>
-		
+
 		<div class="content">
 			<form action="fm_add_items.php" method="POST">
 				<div class="first_block">
@@ -128,55 +128,55 @@ if(isset($_REQUEST["add_items"]))
 					<hr>
 					<p>Item Name</p>
 					<input type="text" placeholder="Name" name="item_name" required>
-					
+
 					<p>Category Name</p>
-					<select name="cat_name" > 
+					<select name="cat_name" >
 						<?php
 							$result = getJSONFromDB("select * from CATEGORY");
-							$result = json_decode($result, true);		
+							$result = json_decode($result, true);
 							for($i=0;$i<sizeof($result);$i++){
-								
+
 								$name = $result[$i]["CATEGORY_NAME"];
 								echo "<option value='$name'>$name</option>";
 							}
-						
+
 						?>
 					</select>
-					
+
 					<p>Sub-Category Name</p>
-					<select name="subcat_name" > 
+					<select name="subcat_name" >
 						<?php
 							$result = getJSONFromDB("select * from SUBCATEGORY");
-							$result = json_decode($result, true);		
+							$result = json_decode($result, true);
 							for($i=0;$i<sizeof($result);$i++){
 								$name = $result[$i]["SUBCATEGORY_NAME"];
 								echo "<option value='$name'>$name</option>";
 							}
 						?>
 					</select>
-					
+
 					<p>Stock</p>
 					<input type="number" placeholder="Stock" name="stock" required>
-					
+
 				</div>
-					
+
 				<div class="second_block">
-				
+
 					<p>Item Price</p>
 					<input type="number" placeholder="0 tk." name="price" required>
 					<p>Discount Rate</p>
 					<input type="number" placeholder="0%" name="discount"required>
-					
-						
+
+
 					<input type="submit" name="add_items" value="Add" required>
 				</div>
 			</form>
 		</div>
 	</div>
-	
+
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
